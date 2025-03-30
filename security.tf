@@ -1,5 +1,5 @@
 resource "aws_security_group" "web_server" {
-  name_prefix = "web-server-sg5"
+  name_prefix = "web-server-sg6"
 
   ingress {
     from_port   = 22
