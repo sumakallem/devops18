@@ -27,6 +27,6 @@ terraform {
 backend "s3" {
 region = "ap-south-1"
 bucket = "suma.next0022.project.bucket"
-key = "prod/terraform.tfstate"
+key = "Mono_proj/terraform.tfstate"
 }
 }
