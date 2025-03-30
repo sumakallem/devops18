@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "one" {
-  bucket = "suma.next0011.project.bucket"
+  bucket = "suma.next0022.project.bucket"
 }
 
 resource "aws_s3_bucket_ownership_controls" "two" {
@@ -20,14 +20,6 @@ resource "aws_s3_bucket_versioning" "three" {
 bucket = aws_s3_bucket.one.id
 versioning_configuration {
 status = "Enabled"
-}
-}
-
-terraform {
-backend "s3" {
-region = "ap-south-1"
-bucket = "suma.next0011.project.bucket"
-key = "prod/terraform.tfstate"
 }
 }
 
