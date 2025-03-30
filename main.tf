@@ -35,8 +35,6 @@ resource "aws_autoscaling_group" "web_server_asg" {
     launch_template {
         id      = aws_launch_template.web_server_as.id
         version = "$Latest"
-      }
-    
-    
+      }    
   }
 
