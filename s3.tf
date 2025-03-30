@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "one" {
-  bucket = "suma.next0033.project.bucket"
+  bucket = "suma.next0066.project.bucket"
 }
 
 resource "aws_s3_bucket_ownership_controls" "two" {
@@ -23,4 +23,11 @@ status = "Enabled"
 }
 }
 
+terraform {
+backend "s3" {
+region = "ap-south-1"
+bucket = "suma.next0066.project.bucket"
+key = "Second_Attempt/terraform.tfstate"
+}
+}
 
