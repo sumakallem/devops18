@@ -1,5 +1,5 @@
 resource "aws_launch_template" "web_server_as" {
-    name = "project_mono_4"
+    name = "project_mono_5"
     image_id           = "ami-01bd9d8f06d29d6a0"
     vpc_security_group_ids = [aws_security_group.web_server.id]
     instance_type = "t2.nano"
@@ -11,7 +11,7 @@ resource "aws_launch_template" "web_server_as" {
 }
    
   resource "aws_elb" "web_server_lb"{
-     name = "web-server-lb4"
+     name = "web-server-lb5"
      security_groups = [aws_security_group.web_server.id]
      subnets = ["subnet-01f2c32ef6cb62ecd", "subnet-04ce12a377063caa3"]
      listener {
@@ -25,7 +25,7 @@ resource "aws_launch_template" "web_server_as" {
     }
   }
 resource "aws_autoscaling_group" "web_server_asg" {
-    name                 = "web-server-asg4"
+    name                 = "web-server-asg5"
     min_size             = 1
     max_size             = 3
     desired_capacity     = 2
