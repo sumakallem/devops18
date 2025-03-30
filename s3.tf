@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "one" {
-  bucket = "suma.next12345.project.bucket"
+  bucket = "suma.next0011.project.bucket"
 }
 
 resource "aws_s3_bucket_ownership_controls" "two" {
