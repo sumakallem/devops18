@@ -23,11 +23,3 @@ status = "Enabled"
 }
 }
 
-terraform {
-backend "s3" {
-region = "ap-south-1"
-bucket = "suma.next0066.project.bucket"
-key = "Second_Attempt/terraform.tfstate"
-}
-}
-
