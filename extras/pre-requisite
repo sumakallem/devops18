@@ -1,0 +1,31 @@
+Monolithic project:
+==================
+
+Pre-requisite:
+launch an EC2 instance  with : T2 medium, SG - all traffic, EBS volume 28GB
+
+Install Ansible:
+amazon-linux-extras install ansible2 -y
+ yum install python pip -y
+  pip install boto3
+  
+Install Terraform:
+Install Jenkins
+
+
+Remove the below for initial build
+terraform {
+backend "s3" {
+region = "ap-south-1"
+bucket = "suma.devops.project.bucket"
+key = "prod/terraform.tfstate"
+}
+}
+
+wget -O splunk-9.0.1-82c987350fde-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.0.1/linux/splunk-9.0.1- 82c987350fde-Linux-x86_64.tgz"
+
+Splunk credetials:
+In server: admin, Admin@1234
+
+sh 'ansible-playbook ansible/deployment.yml'   --> for static inventory
+sh 'ansible-playbook -i /opt/ansible/inventory/aws_ec2.yml ansible/deployment.yml' 	--> Dynamic deployment
