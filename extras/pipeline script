@@ -1,0 +1,52 @@
+pipeline{
+    agent any
+    stages{
+        stage("code"){
+            steps{
+                git branch: 'main', url: 'https://github.com/sumakallem/devops18.git'
+                echo "Code is READY"
+            }
+        }
+        
+        stage("Init"){
+            steps{
+					sh 'terraform init'		#first successfull build
+                    sh 'echo -e "yes\n" | terraform init'	#after first successfull build  - statefile.tf
+            }
+        }
+        
+        stage("refresh"){
+            steps{
+                sh 'terraform refresh'
+            }
+        }    
+        
+        
+        stage("plan"){
+            steps{
+                sh 'terraform plan'
+            }
+        }
+        
+        stage("apply"){
+            steps{
+                sh 'terraform apply --auto-approve'
+                echo "Infra is created"
+            }
+        }
+        
+        stage("Deploy"){
+            steps{
+                sh 'ansible-playbook -i /opt/ansible/inventory/aws_ec2.yml ansible/deployment.yml -vvv'
+            }
+        }
+     }
+     
+     post{
+         always{
+             slackSend(
+                channel: 'monolithic-project', message: 'Build Status'
+            )
+         }
+     }
+}
